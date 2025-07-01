@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baksey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      min-height: calc(var(--vh, 1vh) * 100);
+      font-family: sans-serif;
+      overflow: auto;
+    }
+
+    #vanta-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(var(--vh, 1vh) * 100);
+      padding: 2vh 0;
+    }
+
+    img.main-photo {
+      max-width: 70vw;
+      max-height: 70vh;
+      object-fit: contain;
+      opacity: 0;
+      animation: fadeIn 1.2s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    .socials {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .socials a {
+      color: white;
+      text-decoration: none;
+      opacity: 0;
+      transform: scale(1);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .socials a:hover {
+      filter: brightness(80%);
+      transform: scale(1.15);
+    }
+
+    .socials a:nth-child(1) { animation-delay: 0.6s; }
+    .socials a:nth-child(2) { animation-delay: 0.75s; }
+    .socials a:nth-child(3) { animation-delay: 0.9s; }
+    .socials a:nth-child(4) { animation-delay: 1.05s; }
+
+    .socials img {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 480px) {
+      .socials img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="vanta-bg"></div>
+
+  <div class="content">
+    <img class="main-photo" src="assets/photo.jpeg" alt="Centered Image" />
+    <div class="socials">
+      <a href="https://spotify.com/" target="_blank"><img src="assets/spotify.svg" alt="Spotify"></a>
+      <a href="https://music.apple.com/" target="_blank"><img src="assets/applemusic.svg" alt="Apple Music"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="https://x.com/" target="_blank"><img src="assets/x.svg" alt="X"></a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
+  <script>
+    let vantaEffect;
+    function initVanta() {
+      if (vantaEffect) vantaEffect.destroy();
+      vantaEffect = VANTA.FOG({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        highlightColor: 0x0,
+        midtoneColor: 0x1f221f,
+        lowlightColor: 0x1e2222,
+        baseColor: 0x121414,
+        blurFactor: 0.30,
+        speed: 0.20,
+        zoom: 0.40
+      });
+    }
+
+    window.addEventListener("load", () => {
+      initVanta();
+    });
+
+    window.addEventListener("resize", () => {
+      initVanta();
+    });
+
+    function setVH() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    window.addEventListener('resize', setVH);
+    setVH();
+  </script>
+</body>
+</html>
