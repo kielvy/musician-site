@@ -190,5 +190,13 @@
 /* Ensure background is set like SPA */
 #home::before{content:"";position:absolute;inset:0;background:url('/assets/backgroundhome.jpg') center/cover no-repeat;filter:brightness(.45) contrast(1.05) saturate(1.05);transform:scale(1.02);}
 </style>
-
+  
+<div id="footer"></div>
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+</script>
 </body></html>
