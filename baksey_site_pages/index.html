@@ -200,4 +200,21 @@
         document.getElementById("footer").innerHTML = data;
       });
   </script>
+  <style>
+  #footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  #footer > * {
+    pointer-events: auto;
+  }
+
+  @media (max-width: 640px) {
+    #latestRelease { margin-bottom: 48px; }
+  }
+</style>
 </body></html>
