@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baksey — 404</title>
+  <meta name="description" content="This page doesn’t exist. Return home." />
+
+  <!-- Icons -->
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/mark.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Baksey — 404">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.baksey.me/404">
+  <meta property="og:image" content="https://www.baksey.me/assets/backgroundhome.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Baksey — 404">
+  <meta name="twitter:image" content="https://www.baksey.me/assets/backgroundhome.jpg">
+
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --fg:#e9eaec;
+      --muted:#9aa3ad;
+      --bd:rgba(255,255,255,.14);
+      --glass:rgba(18,20,26,.58);
+      --shadow:0 22px 60px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--fg);overflow:hidden}
+
+    /* Loader (match index) */
+    #loader{position:fixed;inset:0;display:grid;place-items:center;background:#0b0c0f;z-index:9999;transition:opacity .4s ease, visibility .4s ease}
+    #loader.hide{opacity:0;visibility:hidden}
+    .markpulse{width:92px;height:92px;display:grid;place-items:center}
+    .markpulse img{width:80px;opacity:.85;animation:pulse 1.2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(.9);opacity:.6}50%{transform:scale(1);opacity:1}}
+
+    /* Header (match index) */
+    header{position:fixed;top:0;left:0;width:100%;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;z-index:30}
+    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+    .brand img{height:22px;opacity:.96}
+    .nav{display:flex;gap:24px}
+    .nav a{color:var(--fg);text-decoration:none;opacity:.92;cursor:pointer}
+    .nav a:hover{opacity:1}
+
+    /* Background (same recipe as #home in index) */
+    .bg{position:fixed;inset:0;z-index:0}
+    .bg::before{content:"";position:absolute;inset:0;background:url('/assets/backgroundhome.jpg') center/cover no-repeat;filter:brightness(.45) contrast(1.05) saturate(1.05);transform:scale(1.02)}
+
+    /* Center content (clean) */
+    .wrap{position:fixed;inset:0;z-index:1;display:grid;place-items:center;padding:96px 22px 26px;overflow:hidden}
+    .center{display:grid;gap:18px;justify-items:center;text-align:center}
+    .center .mark{width:min(28vmin,200px);opacity:.92;filter:drop-shadow(0 10px 34px rgba(0,0,0,.45))}
+    .eyebrow{color:var(--muted);font-size:12px;letter-spacing:.12em}
+    h1{margin:2px 0 10px;font-size:clamp(22px,4.8vw,40px);letter-spacing:.04em}
+    .cta{margin-top:6px;display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border:1px solid var(--bd);border-radius:12px;
+         text-decoration:none;color:var(--fg);background:rgba(255,255,255,.06);transition:transform .18s ease, background .18s ease, border-color .18s ease}
+    .cta:hover{transform:translateY(-1px);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+
+    @media (max-width:640px){
+      h1{font-size:clamp(20px,6vw,32px)}
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5f75ea2d-f1b5-4ffb-b209-0df23547255a"></script>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true"><div class="markpulse"><img src="/assets/mark.svg" alt=""></div></div>
+  <script>
+    window.addEventListener('load', ()=>{
+      const l=document.getElementById('loader');
+      if(l) setTimeout(()=>l.classList.add('hide'), 250);
+    });
+  </script>
+
+  <!-- Header -->
+  <header>
+    <a href="/" class="brand" aria-label="Baksey home"><img src="/assets/baksey-logo.svg" alt="Baksey"></a>
+    <nav class="nav"><a href="/music/">MUSIC</a><a href="/socials/">SOCIALS</a></nav>
+  </header>
+
+  <!-- Background -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Center -->
+  <main class="wrap" role="main">
+    <section class="center" aria-label="404">
+      <img class="mark" src="/assets/mark.svg" alt="Baksey Mark">
+      <div class="eyebrow">404 — NOT FOUND</div>
+      <h1>This page doesn’t exist.</h1>
+      <a class="cta" href="/">Back to Start</a>
+    </section>
+  </main>
+</body>
+</html>
